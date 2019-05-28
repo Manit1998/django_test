@@ -2,14 +2,10 @@ from django.shortcuts import render
 
 from django.http import JsonResponse
 from django.http import HttpResponse
-from django.contrib.auth import authenticate
 from account.models import data
 
 from django.views.decorators.csrf import csrf_exempt
 import hashlib
-
-from django.views.decorators.csrf import ensure_csrf_cookie
-@ensure_csrf_cookie
 
 @csrf_exempt
 def login(request):
@@ -41,7 +37,7 @@ def login(request):
 		else:
 			status = 'logged in successfully'
 			request.session['username']=username
-		print(request.session['username'])
+			print(request.session['username'])
 
 		return JsonResponse({'status':'ok','result':{'response':status}})
 
